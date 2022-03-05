@@ -1,4 +1,3 @@
-from download import Wallpaper
 import ctypes
 import os
 import random
@@ -12,7 +11,7 @@ if os.path.isdir(path):
 else:
     os.mkdir(path)
 
-Wallpaper().download()
+download_path = root + path
 
 backgrounds = []
 for root, directories, files in os.walk(os.path.join(path)):
