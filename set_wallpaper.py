@@ -17,4 +17,5 @@ backgrounds = []
 for root, directories, files in os.walk(os.path.join(path)):
     backgrounds = [file.lower() for file in files if file.endswith(('.png', '.jpg', '.jpeg'))]
 
-# ctypes.windll.user32.SystemParametersInfoW(20, 0, f"{path}/{random.choice(backgrounds)}", 0)
+def set():
+    ctypes.windll.user32.SystemParametersInfoW(20, 0, f"{download_path}/{random.choice(backgrounds)}", 0)

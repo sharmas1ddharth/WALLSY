@@ -3,8 +3,8 @@ import config
 
 
 class Wallpaper:
-    def __init__(self, path, keyword="8k"):
-        self.URL = f"https://api.pexels.com/v1/search?query={keyword}&orientation=landscape&size=large&per_page=1"
+    def __init__(self, path, keyword="8k", page_num=1):
+        self.URL = f"https://api.pexels.com/v1/search?query={keyword}&orientation=landscape&page={page_num}&size=large&per_page=1"
         self.HEADERS = {"Authorization": f"{config.api_key}"}
         self.JSON = self.get_json()
         self.path = path
@@ -16,6 +16,6 @@ class Wallpaper:
     def download(self):
         json_object = self.JSON
         response = requests.get(json_object['photos'][0]['src']['large2x'])
-        filename = json_object['photos'][0]['alt']
-        with open(f"{self.path}/{filename}.jpeg", "wb") as f:
+        # filename = json_object['photos'][0]['alt']
+        with open(f"{self.path}/wallpaper.jpeg", "wb") as f:
             f.write(response.content)
